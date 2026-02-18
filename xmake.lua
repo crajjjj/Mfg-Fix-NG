@@ -18,7 +18,7 @@ option_end()
 
 -- Dependencies & Includes
 -- https://github.com/xmake-io/xmake-repo/tree/dev
-add_requires("simpleini")
+add_requires("simpleini", "directxtk")
 
 includes("lib/commonlibsse-ng")
 
@@ -54,7 +54,7 @@ end
 -- Target
 target(PROJECT_NAME)
     -- Dependencies
-    add_packages("simpleini")
+    add_packages("simpleini", "directxtk")
     add_deps("detours")
     add_includedirs("lib/detours/src")
 

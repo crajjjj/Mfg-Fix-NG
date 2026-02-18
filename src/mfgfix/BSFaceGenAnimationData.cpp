@@ -381,7 +381,7 @@ namespace MfgFix
 
 			merge(phoneme1, phoneme3);
 			if (dialogueData) {
-				auto threshold = Settings::Get().dialogue.fDialoguePhonemeThreshold;
+				auto threshold = std::clamp(Settings::Get().dialogue.fDialoguePhonemeThreshold, 0.0f, 200.0f) / 100.0f;
 				auto count = min(phoneme2.count, phoneme3.count);
 				for (std::uint32_t i = 0; i < count; ++i) {
 					if (phoneme2.values[i] >= threshold) {
@@ -462,10 +462,10 @@ namespace MfgFix
 			EyesBlinkingUpdate(a_timeDelta, false);
 
 			if (!unk21A) {
-				modifier3.values[Modifier::LookLeft] += eyesHeading < 0.0f ? eyesHeading / eyesHeadingMax : 0.0f;
-				modifier3.values[Modifier::LookRight] -= eyesHeading > 0.0f ? eyesHeading / eyesHeadingMax : 0.0f;
+				modifier3.values[Modifier::LookLeft] += eyesHeading < 0.0f ? -eyesHeading / eyesHeadingMax : 0.0f;
+				modifier3.values[Modifier::LookRight] += eyesHeading > 0.0f ? eyesHeading / eyesHeadingMax : 0.0f;
 				modifier3.values[Modifier::LookDown] += eyesPitch < 0.0f ? -eyesPitch / eyesPitchMax : 0.0f;
-				modifier3.values[Modifier::LookUp] -= eyesPitch > 0.0f ? eyesPitch / eyesPitchMax : 0.0f;
+				modifier3.values[Modifier::LookUp] += eyesPitch > 0.0f ? eyesPitch / eyesPitchMax : 0.0f;
 
 				EyesMovementUpdate(a_timeDelta);
 			}
@@ -506,6 +506,10 @@ namespace MfgFix
 				modifier3.values[Modifier::LookRight] = currentHeading > 0.0f ? currentHeading / eyesHeadingMax : 0.0f;
 				modifier3.values[Modifier::LookDown] = currentPitch < 0.0f ? -currentPitch / eyesPitchMax : 0.0f;
 				modifier3.values[Modifier::LookUp] = currentPitch > 0.0f ? currentPitch / eyesPitchMax : 0.0f;
+				modifier3.values[Modifier::LookLeft] = std::clamp(modifier3.values[Modifier::LookLeft], 0.0f, 1.0f);
+				modifier3.values[Modifier::LookRight] = std::clamp(modifier3.values[Modifier::LookRight], 0.0f, 1.0f);
+				modifier3.values[Modifier::LookDown] = std::clamp(modifier3.values[Modifier::LookDown], 0.0f, 1.0f);
+				modifier3.values[Modifier::LookUp] = std::clamp(modifier3.values[Modifier::LookUp], 0.0f, 1.0f);
 			}
 		}
 
@@ -513,7 +517,7 @@ namespace MfgFix
 
 		// phonemes
 		if (dialogueData) {
-			auto threshold = Settings::Get().dialogue.fDialoguePhonemeThreshold;
+			auto threshold = std::clamp(Settings::Get().dialogue.fDialoguePhonemeThreshold, 0.0f, 200.0f) / 100.0f;
 			for (std::uint32_t i = 0; i < phoneme2.count; ++i) {
 				if (phoneme2.values[i] < threshold) {
 					phoneme2.values[i] = 0.0f;
