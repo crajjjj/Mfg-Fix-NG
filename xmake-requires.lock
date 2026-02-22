@@ -3,53 +3,26 @@
         version = "1.0"
     },
     ["windows|x64"] = {
-        ["cmake#31fecfc4"] = {
-            repo = {
-                branch = "master",
-                commit = "d690827620fac7d455dac05ed2e60e576f5cdcf8",
-                url = "https://github.com/xmake-io/xmake-repo.git"
-            },
-            version = "3.31.6"
+        ["cmake#f56260b5"] = {
+            version = "3.31.6-msvc6"
         },
-        ["directxmath#31fecfc4"] = {
-            repo = {
-                branch = "master",
-                commit = "f6251c012faabeb21d64f50a41e892e56993e77e",
-                url = "https://github.com/xmake-io/xmake-repo.git"
-            },
+        ["directxmath#f56260b5"] = {
             version = "2024.02"
         },
-        ["directxtk#31fecfc4"] = {
-            repo = {
-                branch = "master",
-                commit = "f6251c012faabeb21d64f50a41e892e56993e77e",
-                url = "https://github.com/xmake-io/xmake-repo.git"
-            },
+        ["directxtk#f56260b5"] = {
             version = "24.2.0"
         },
-        ["rapidcsv#31fecfc4"] = {
-            repo = {
-                branch = "master",
-                commit = "d690827620fac7d455dac05ed2e60e576f5cdcf8",
-                url = "https://github.com/xmake-io/xmake-repo.git"
-            },
-            version = "v8.84"
+        ["ninja#f56260b5"] = {
+            version = "1.12.1"
         },
-        ["simpleini#31fecfc4"] = {
-            repo = {
-                branch = "master",
-                commit = "c54cc6e7bc4c571586864d58fdcf119d2ac32250",
-                url = "https://github.com/xmake-io/xmake-repo.git"
-            },
-            version = "v4.22"
+        ["rapidcsv#f56260b5"] = {
+            version = "v8.90"
         },
-        ["spdlog#9c36f0a9"] = {
-            repo = {
-                branch = "master",
-                commit = "d690827620fac7d455dac05ed2e60e576f5cdcf8",
-                url = "https://github.com/xmake-io/xmake-repo.git"
-            },
-            version = "v1.15.1"
+        ["simpleini#f56260b5"] = {
+            version = "v4.25"
+        },
+        ["spdlog#09c8c173"] = {
+            version = "v1.17.0"
         }
     }
 }
